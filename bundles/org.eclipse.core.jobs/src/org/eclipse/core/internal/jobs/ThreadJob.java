@@ -290,10 +290,8 @@ class ThreadJob extends Job {
 				Thread.currentThread().interrupt();
 			//only update the lock state if we ended up using the thread job that was given to us
 			waitEnd(threadJob, threadJob == result, monitor);
-			if (threadJob == result) {
-				if (waiting)
-					manager.implicitJobs.removeWaiting(threadJob);
-			}
+			if (waiting)
+				manager.implicitJobs.removeWaiting(threadJob);
 			if (canBlock)
 				// must unregister monitoring this job
 				manager.endMonitoring(threadJob);
